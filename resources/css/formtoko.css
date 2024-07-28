@@ -1,0 +1,28 @@
+<style>
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating input:checked~label {
+    background-color: gold;
+}
+
+</style>

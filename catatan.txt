@@ -1,0 +1,25 @@
+yang harus diperbaiki:
+1. tampilan backform masih monoton.
+2. bagian sidebar.blade.php di bagian template adalah bagian tidak berguna.
+3. form harus dapat mengisi nominal dengan . otomatis, saat ini hanya formbarang dan formsale yang sudah diperbaiki, ingat selain form masih harus ubah bagian edit juga. untuk controller sudah aman
+
+yang belum dibuat:
+1. bagian analisa idenya ingin membuat chard bulat penjualan berdasarkan filter bulan yang diinginkan yang di dalam pie chard tersesebut berisikan persentasi dari semua produk yang terjual.
+
+percepat pencarian:
+1. untuk dashboard halaman home maka home.blade.php "bagian ini untuk dashboard"
+
+
+instal algoritma clustering:
+composer require php-ai/php-ml
+
+untuk membuka log:
+- code storage/logs/laravel.log
+
+membuat log untuk clear:
+- php artisan make:command ClearLogs
+- app\Console\Commands\ClearLogs.php
+- php artisan logs:clear
+
+alpine.min.js 
+wget https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js -O alpine.min.js
