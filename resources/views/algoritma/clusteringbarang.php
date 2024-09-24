@@ -35,6 +35,8 @@ function clusteringBarang($bulan_periode)
         ];
     }
 
+    mt_srand(42);
+
     $kmeans = new KMeans(2);
     $clusters = $kmeans->cluster($samples);
 

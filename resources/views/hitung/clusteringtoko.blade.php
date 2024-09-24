@@ -31,8 +31,18 @@
         <p>Tidak ada hasil clustering.</p>
         @endif
 
+        <div class="mt-4">
+            <br>
+            @if(isset($nlgDeskripsiToko) && count($nlgDeskripsiToko) > 0)
+            @foreach ($nlgDeskripsiToko as $deskripsi)
+            <h5>{!! $deskripsi !!}</h5>
+            <br>
+            @endforeach
+            @endif
+
+        </div>
+
         <div class="d-flex justify-content-end mb-3">
-            <!-- kembali -->
             <a href="/tabelsale"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
         </div>
     </div>

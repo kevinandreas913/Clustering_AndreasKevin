@@ -1,0 +1,13 @@
+Perancangan Web Optimalisasi Penjualan dan Penitipan Produk usaha Sotong Kevin: Implementasi Algoritma Clustering dan Decision Tree
+
+PENERAPAN ALGORITMA K-MEANS UNTUK OPTIMALISASI DISTRIBUSI DAN KONSINYASI PADA USAHA SOTONG KEVIN
+PENERAPAN ALGORITMA K-MEANS UNTUK OPTIMASI FLUKTUASI PENJUALAN PADA USAHA SOTONG KEVIN
+
+penggunaan decissions tree dikarenakan berbagai metode dalam pengambilan keputuan 
+   seperti MCDM seperti SAW, ELECTRE, topsis dan sebagainya perlu bobot awal dari setiap kategori.
+   pada kasus ini, bobot awal tidak dapat diberikan karena semua point termasuk penting.
+
+NLP (Natural Language Processing) : Memahami makna teks. 
+NLU (Natural Language Understanding) : Seluruh proses seperti keputusan dan tindakan diambil olehnya. 
+NLG (Natural Language Generation) : Menghasilkan teks bahasa manusia dari data terstruktur yang dihasilkan oleh sistem untuk merespons.
+

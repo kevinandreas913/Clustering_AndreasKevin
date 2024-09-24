@@ -20,12 +20,12 @@ class Storesseeder extends Seeder
             [
                 'id' => 1,
                 'kode_toko' => '001',
-                'nama_toko' => 'Toko Along',
+                'nama_toko' => 'Toko Segar',
                 'alamat' => 'jalan raya sukajalan',
                 'nomor_telepon' => null,
-                'kesepakatan' => 2,
-                'lokasi' => 1,
-                'pelayanan' => 1,
+                'kesepakatan' => 5,
+                'lokasi' => 4,
+                'pelayanan' => 5,
                 'hasil' => 'Ya',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -33,13 +33,13 @@ class Storesseeder extends Seeder
             [
                 'id' => 2,
                 'kode_toko' => '002',
-                'nama_toko' => 'Toko Jutoli',
+                'nama_toko' => 'Toko XYZ',
                 'alamat' => 'jalan raya jalan terus',
                 'nomor_telepon' => null,
                 'kesepakatan' => 3,
                 'lokasi' => 2,
                 'pelayanan' => 4,
-                'hasil' => 'Ya',
+                'hasil' => 'Tidak',
                 'created_at' => $now,
                 'updated_at' => $now
             ],

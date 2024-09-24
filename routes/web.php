@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\stores;
 use App\Models\products;
 use App\Http\Controllers\Analisacontroller;
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,14 +22,17 @@ use App\Http\Controllers\Analisacontroller;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login.proses');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function () {
     // Ambil jumlah toko dari database
     $storeCount = stores::count();
     $productCount = products::count();
     // Kirim data ke view
     return view('home', ['storeCount' => $storeCount, 'productCount' => $productCount]);
-});
-
+})->middleware('auth');;
 
 Route::get('/analisa', [Analisacontroller::class, 'analisa']);
 

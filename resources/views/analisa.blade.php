@@ -27,7 +27,7 @@
         <br>
         <div class="d-flex justify-content-end mb-3">
             <!-- kembali -->
-            <a href="/"><button type="button" class="btn btn-secondary btn-md">Halaman Utama</button></a>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary btn-md">Halaman Utama</button></a>
         </div>
     </div>
 

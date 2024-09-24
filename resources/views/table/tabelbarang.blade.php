@@ -13,7 +13,9 @@
             <div class="col-12">
                 <div class="row">
                     <div class="py-4">
-                        <h2>Tabel Barang</h2>
+                        <h1 class="text-center" style="font-weight: bold; font-size: 3rem; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+                            Tabel Barang
+                        </h1>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-primary me-md-2" type="button"><a href="/barang" style="color: white">Tambah</a></button>
                         </div>
@@ -21,7 +23,7 @@
                 </div>
                 <table class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>#</th>
                             <th>Kode Barang</th>
                             <th>Nama Produk</th>
@@ -33,7 +35,7 @@
                     <tbody>
                         @forelse ($products as $produk)
                         <tr>
-                            <th>{{$loop->iteration}}</th>
+                            <th class="text-center">{{$loop->iteration}}</th>
                             <th>{{$produk->kode_barang}}</th>
                             <th>{{$produk->nama}}</th>
                             <th>{{$produk->deskripsi}}</th>
@@ -61,7 +63,7 @@
                 </table>
                 <div class="d-flex justify-content-end mb-3">
                     <!-- kembali -->
-                    <a href="/"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
+                    <a href="/dashboard"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
                 </div>
             </div>
         </div>

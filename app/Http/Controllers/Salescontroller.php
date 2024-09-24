@@ -104,6 +104,7 @@ class Salescontroller extends Controller
     }
 
     // clustering toko
+
     public function startClusteringToko(Request $request)
     {
         $request->validate([
@@ -128,11 +129,36 @@ class Salescontroller extends Controller
 
         Log::info('Result of clustering:', $result);
 
+        // Generate NLG descriptions
+        $nlgDeskripsiToko = $this->generateNLGDescriptionsToko($result);
+
         return view('hitung.clusteringtoko', [
-            'backgroundImage' => '/assets/img/clusteringimg.png',
+            'backgroundImage' => '/assets/img/clustertoko.png',
             'result' => $result,
+            'nlgDeskripsiToko' => $nlgDeskripsiToko,
             'type' => 'Toko'
         ]);
+    }
+
+
+    private function generateNLGDescriptionsToko($clusters)
+    {
+        $descriptions = [];
+
+        foreach ($clusters as $cluster) {
+            $label = $cluster['cluster'];
+            if (!isset($descriptions[$label])) {
+                $descriptions[$label] = [];
+            }
+            $descriptions[$label][] = " - {$cluster['nama_toko']} dengan penjualan {$cluster['banyak_terjual']} pcs, dalam jangka waktu {$cluster['durasi_penjualan']} hari.";
+        }
+
+        $formattedDescriptions = [];
+        foreach ($descriptions as $label => $stores) {
+            $formattedDescriptions[] = "Dari data diperoleh '$label' :<br>" . implode("<br> ", $stores);
+        }
+
+        return $formattedDescriptions;
     }
 
     // clustering barang
@@ -160,11 +186,37 @@ class Salescontroller extends Controller
 
         Log::info('Result of clustering:', $result);
 
+        
+        $nlgDeskripsiBarang = $this->generateNLGDescriptionsBarang($result);
+
         return view('hitung.clusteringbarang', [
-            'backgroundImage' => '/assets/img/clusteringimg.png',
+            'backgroundImage' => '/assets/img/clusterbarang.png',
             'result' => $result,
-            'type' => 'Barang'
+            'nlgDeskripsiBarang' => $nlgDeskripsiBarang,
+            'type' => 'Barang', 
+            'kesimpulan' => '$kesimpulan',
         ]);
     }
+
+    private function generateNLGDescriptionsBarang($clusters)
+    {
+        $descriptions = [];
+
+        foreach ($clusters as $cluster) {
+            $label = $cluster['cluster'];
+            if (!isset($descriptions[$label])) {
+                $descriptions[$label] = [];
+            }
+            $descriptions[$label][] = " - {$cluster['nama_produk']} dengan harga satuan Rp{$cluster['harga_unit']}/pcs, banyak terjual {$cluster['banyak_terjual']}, dalam jangka waktu hari {$cluster['durasi_penjualan']}.";
+        }
+
+        $formattedDescriptions = [];
+        foreach ($descriptions as $label => $products) {
+            $formattedDescriptions[] = "Dari data diperoleh '$label' :<br>" . implode("<br> ", $products);
+        }
+
+        return $formattedDescriptions;
+    }
+
 
 }

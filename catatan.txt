@@ -2,12 +2,12 @@ yang harus diperbaiki:
 1. tampilan backform masih monoton.
 2. bagian sidebar.blade.php di bagian template adalah bagian tidak berguna.
 3. form harus dapat mengisi nominal dengan . otomatis, saat ini hanya formbarang dan formsale yang sudah diperbaiki, ingat selain form masih harus ubah bagian edit juga. untuk controller sudah aman
+4. AI masih tidak mau jalan semestinya, yang terbuat adalah di web.php, APP/"Services/OpenAIService.php", Controller=AIController, .env=OPENAI_API_KEY=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, service.php='openai' => [
+        'api_key' => env('OPENAI_API_KEY'), 
+    ], dan clusteringbarang.blade.php.
 
 yang belum dibuat:
-1. bagian analisa idenya ingin membuat chard bulat penjualan berdasarkan filter bulan yang diinginkan yang di dalam pie chard tersesebut berisikan persentasi dari semua produk yang terjual.
-
-percepat pencarian:
-1. untuk dashboard halaman home maka home.blade.php "bagian ini untuk dashboard"
+1. buat kesimpulan otomatis dari clustering toko dan clustering barang.
 
 
 instal algoritma clustering:
@@ -23,3 +23,9 @@ membuat log untuk clear:
 
 alpine.min.js 
 wget https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js -O alpine.min.js
+
+
+php artisan cache:clear
+php artisan config:clear
+php artisan optimize
+
