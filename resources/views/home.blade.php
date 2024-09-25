@@ -829,9 +829,11 @@
                                 </div>
                             </a>
                             <ul class="sub-menu">
-
                                 <li>
-                                    <a href="/logout">Log out</a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-link" style="text-decoration: none;">Log out</button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>

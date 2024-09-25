@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -35,9 +36,18 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        Log::info('Logout method called. Method: ' . $request->method());
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', 'Kamu berhasil logout');
     }
+
+    // public function logout_proses()
+    // {
+    //     Auth::logout();
+    //     return redirect()->route('login')->with('success', 'Kamu berhasil logout');
+    // }
 }

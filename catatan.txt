@@ -27,5 +27,10 @@ wget https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js -O alpine
 
 php artisan cache:clear
 php artisan config:clear
+php artisan optimize:clear
 php artisan optimize
+php artisan view:clear
+php artisan route:clear
+php artisan event:clear
+composer clear-cache
 
