@@ -64,9 +64,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/tokohapus/{toko}', [Storecontroller::class, 'destroytoko'])->name('hapustoko.destroy');
 
-    Route::get('/kalkulasi', [Storecontroller::class, 'kalkulasi'])->name('hitung.formhitung');
-    Route::post('/startkalkulasi', [Storecontroller::class, 'startkalkulasi'])->name('toko.kalkulasi');
-
 
     // konsinyasi
     Route::get('/sale', [Salescontroller::class, 'formsale']);

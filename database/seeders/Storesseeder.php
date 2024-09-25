@@ -23,10 +23,6 @@ class Storesseeder extends Seeder
                 'nama_toko' => 'Toko Segar',
                 'alamat' => 'jalan raya sukajalan',
                 'nomor_telepon' => null,
-                'kesepakatan' => 5,
-                'lokasi' => 4,
-                'pelayanan' => 5,
-                'hasil' => 'Ya',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
@@ -36,10 +32,6 @@ class Storesseeder extends Seeder
                 'nama_toko' => 'Toko XYZ',
                 'alamat' => 'jalan raya jalan terus',
                 'nomor_telepon' => null,
-                'kesepakatan' => 3,
-                'lokasi' => 2,
-                'pelayanan' => 4,
-                'hasil' => 'Tidak',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
@@ -49,10 +41,6 @@ class Storesseeder extends Seeder
                 'nama_toko' => 'Toko Herman',
                 'alamat' => 'jalan raya heran',
                 'nomor_telepon' => null,
-                'kesepakatan' => 2,
-                'lokasi' => 1,
-                'pelayanan' => 3,
-                'hasil' => 'Tidak',
                 'created_at' => $now,
                 'updated_at' => $now
             ],

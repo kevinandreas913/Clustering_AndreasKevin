@@ -27,10 +27,6 @@ return new class extends Migration
             $table->string('nama_toko'); 
             $table->string('alamat')->nullable();
             $table->string('nomor_telepon')->nullable();
-            $table->decimal('kesepakatan', 2, 1)->default(0.0); // Rating (0.0 to 5.0)
-            $table->decimal('lokasi', 2, 1)->default(0.0);   // Rating (0.0 to 5.0)
-            $table->decimal('pelayanan', 2, 1)->default(0.0); // Rating (0.0 to 5.0)
-            $table->string('hasil')->default(false);   // Acceptance (Yes or No)
             $table->timestamps();
         });
 

@@ -25,10 +25,6 @@ class Storecontroller extends Controller
                 'nama_toko' => 'required',
                 'alamat' => '',
                 'nomor_telepon' => '',
-                'kesepakatan' => 'required|numeric|min:0|max:5',
-                'lokasi' => 'required|numeric|min:0|max:5',
-                'pelayanan' => 'required|numeric|min:0|max:5',
-                'hasil' => 'required'
             ]);
 
         stores::create($validatedata);
@@ -68,10 +64,6 @@ class Storecontroller extends Controller
             'nama_toko' => 'required',
             'alamat' => '',
             'nomor_telepon' => '',
-            'kesepakatan' => 'required|numeric|min:0|max:5',
-            'lokasi' => 'required|numeric|min:0|max:5',
-            'pelayanan' => 'required|numeric|min:0|max:5',
-            'hasil' => 'required'
         ]);
 
         stores::where('id', $toko->id)->update($validatedata);
@@ -87,129 +79,4 @@ class Storecontroller extends Controller
 
         return redirect()->route('table.tabeltoko')->with('berhasil', "Hapus data $storesnama berhasil");
     }
-
-    // // kalkulasi
-    // public function kalkulasi()
-    // {
-    //     $backgroundImage = '/assets/img/backformtoko.jpg';
-    //     return view('/hitung/formhitung', [
-    //         'backgroundImage' => $backgroundImage,
-    //     ]);
-    // }
-
-    // public function startkalkulasi(Request $request)
-    // {
-    //     // Validasi input dari form
-    //     $validatedata = $request->validate([
-    //         'kesepakatan' => 'required|numeric|min:0|max:5',
-    //         'lokasi' => 'required|numeric|min:0|max:5',
-    //         'pelayanan' => 'required|numeric|min:0|max:5'
-    //     ]);
-
-
-    //     // Ambil semua data dari database
-    //     $stores = stores::all();
-
-    //     // Format data untuk decision tree
-    //     // $data = [];
-    //     // $labels = [];
-    //     // foreach ($stores as $store) {
-    //     //     $data[] = [$store->kesepakatan, $store->lokasi, $store->pelayanan];
-    //     //     $labels[] = $store->hasil;
-    //     // }
-    //     $data = [];
-    //     $labels = [];
-    //     foreach ($stores as $store) {
-    //         $data[] = [(float) $store->kesepakatan, (float) $store->lokasi, (float) $store->pelayanan]; // Menggunakan (float) untuk memastikan nilai float
-    //         $labels[] = $store->hasil;
-    //     }
-    //     $validatedata = [
-    //         'kesepakatan' => (int) $request->kesepakatan,
-    //         'lokasi' => (int) $request->lokasi,
-    //         'pelayanan' => (int) $request->pelayanan
-    //     ];
-
-
-    //     // Path ke script Python dan interpreter Python
-    //     $pythonScript = base_path('resources/views/algoritma/decisiontree.py');
-    //     $pythonPath = 'C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python311\\python.exe';
-
-    //     // Menjalankan script Python dengan input data yang diperlukan
-    //     $command = "$pythonPath $pythonScript " . escapeshellarg(json_encode($data)) . " " . escapeshellarg(json_encode($labels)) . " " . escapeshellarg(json_encode($validatedata));
-    //     $output = shell_exec($command . ' 2>&1'); // Capture standard error output
-
-
-    //     // Log the command and output for debugging
-    //     Log::info("Executing command: $command");
-    //     Log::info("Output: $output");
-
-    //     // Menangani output dari script Python
-    //     $prediction = trim($output);
-
-    //     // Kembali ke view dengan hasil prediksi
-    //     return view('/hitung/formhitung', [
-    //         'backgroundImage' => '/assets/img/backformtoko.jpg',
-    //         'prediction' => $prediction
-    //     ]);
-    // }
-
-    public function kalkulasi()
-    {
-        $backgroundImage = '/assets/img/backformtoko.jpg';
-        return view('/hitung/formhitung', [
-            'backgroundImage' => $backgroundImage,
-        ]);
-    }
-
-    public function startkalkulasi(Request $request)
-    {
-        // Validasi input dari form
-        $validatedata = $request->validate([
-            'kesepakatan' => 'required|numeric|min:1|max:5',
-            'lokasi' => 'required|numeric|min:1|max:5',
-            'pelayanan' => 'required|numeric|min:1|max:5'
-        ]);
-
-        // Ambil semua data dari database
-        $stores = Stores::all();
-
-        // Format data untuk decision tree
-        $data = [];
-        $labels = [];
-        foreach ($stores as $store) {
-            $data[] = [(float) $store->kesepakatan, (float) $store->lokasi, (float) $store->pelayanan];
-            $labels[] = $store->hasil;
-        }
-
-        if (count($data) < 5 || count($labels) < 5) {
-            return redirect()->back()->with('error', 'Input minimal 5 data terlebih dahulu');
-        }
-
-        // Data instance yang akan diprediksi
-        $instance = [
-            'kesepakatan' => (float) $request->kesepakatan,
-            'lokasi' => (float) $request->lokasi,
-            'pelayanan' => (float) $request->pelayanan
-        ];
-
-        // Path ke script PHP decisiontree.php
-        $phpScript = base_path('resources/views/algoritma/decisiontree.php');
-
-        // Include script PHP untuk menggunakan fungsi dari decision tree
-        require_once $phpScript;
-
-        // Jalankan algoritma decision tree
-        $tree = build_tree($data, $labels, ['kesepakatan', 'lokasi', 'pelayanan']);
-        $prediction = predict($tree, $instance);
-
-        // Simpan gambar tree
-        // $treeImage = $this->save_tree_image($tree);
-
-        // Kembali ke view dengan hasil prediksi
-        return view('/hitung/formhitung', [
-            'backgroundImage' => '/assets/img/backformtoko.jpg',
-            'prediction' => $prediction
-        ]);
-    }
-
 }

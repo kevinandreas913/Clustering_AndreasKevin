@@ -35,10 +35,6 @@
                         <li>Nama Toko: {{$stores->nama_toko}}</li>
                         <li>Alamat: {{$stores->alamat}}</li>
                         <li>Nomor Telepon: {{$stores->nomor_telepon}}</li>
-                        <li>Kesepakatan: {{$stores->kesepakatan}}</li>
-                        <li>Lokasi: {{$stores->lokasi}}</li>
-                        <li>Pelayanan: {{$stores->pelayanan}}</li>
-                        <li>Persetujuan Penitipan: {{$stores->hasil}}</li>
                     </ul>
                 </h2>
                 <div class="d-flex justify-content-end mb-3">

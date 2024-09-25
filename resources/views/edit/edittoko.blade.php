@@ -3,26 +3,21 @@
 </head>
 
 <body>
-    @if(session('berhasil'))
-    <div class="alert alert-success">
-        <h3> {{ session('berhasil') }}</h3>
-    </div>
-    @endif
-
     <div class="container col-lg-6">
         <div class="text-center">
-            <h1>Form Toko</h1>
+            <h1>Edit Toko</h1>
         </div>
         <div class=""></div>
-        <form id="form-barang" action="{{ route('toko.store') }}" method="POST">
+        <form action="{{ url('/updatetoko/'.$stores->id) }}" method="post">
+            @method('PUT')
             @csrf
             <!-- kode toko -->
             <div class="form-group mb-3">
                 <label for="jenis-transaksi">Kode Toko:</label>
-                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#kode_toko">
+                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#Jenistoko">
                     <i class="bi bi-info-circle"></i>
                 </button>
-                <div class="modal fade" id="kode_toko" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="Jenistoko" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -30,7 +25,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Inputan kode toko!</p>
+                                <p>Inputan kode toko anda!</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -38,7 +33,8 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="kode_toko" name="kode_toko" value="{{ old('kode_toko') }}" placeholder="Masukkan  kode toko!" class="form-control @error('kode_toko') is-invalid @enderror">
+
+                <input type="text" id="kode_toko" name="kode_toko" value="{{ old('kode_toko') ?? $stores->kode_toko}}" placeholder="Masukkan kode barang!" class="form-control @error('kode_toko') is-invalid @enderror">
                 @error('kode_toko')
                 <div class="text-danger">
                     {{$message}}
@@ -49,10 +45,10 @@
             <!-- nama toko -->
             <div class="form-group mb-3">
                 <label for="jenis-transaksi">Nama Toko:</label>
-                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#nama_toko">
+                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#Namatoko">
                     <i class="bi bi-info-circle"></i>
                 </button>
-                <div class="modal fade" id="nama_toko" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="Namatoko" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -60,7 +56,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Inputan nama toko!</p>
+                                <p>Inputan nama toko anda!</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -68,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nama_toko" name="nama_toko" value="{{ old('nama_toko') }}" placeholder="Masukkan nama toko!" class="form-control @error('nama_toko') is-invalid @enderror">
+                <input type="text" id="nama_toko" name="nama_toko" value="{{ old('nama_toko') ?? $stores->nama_toko}}" placeholder="Masukkan nama toko!" class="form-control @error('nama_toko') is-invalid @enderror">
                 @error('nama_toko')
                 <div class="text-danger">
                     {{$message}}
@@ -78,7 +74,7 @@
 
             <!-- alamat -->
             <div class="form-group mb-3">
-                <label for="keterangan">Alamat:</label>
+                <label for="alamat">Alamat:</label>
                 <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#alamat">
                     <i class="bi bi-info-circle"></i>
                 </button>
@@ -90,7 +86,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Inputan alamat toko!</p>
+                                <p>Inputan alamat toko</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -98,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <textarea id="alamat" name="alamat" value="{{ old('alamat') }}" placeholder="Masukkan rincian alamat toko!" class="form-control @error('alamat') is-invalid @enderror"></textarea>
+                <textarea id="alamat" name="alamat" placeholder="Masukkan alamat toko tersebut!" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat') ?? $stores->alamat}}</textarea>
                 @error('alamat')
                 <div class="text-danger">
                     {{$message}}
@@ -108,19 +104,19 @@
 
             <!-- nomor telepon  -->
             <div class="form-group mb-3">
-                <label for="nomor_telepon">Nomor Telepon:</label>
-                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#nomor_telepon">
+                <label for="nomortelepon">Nomor Telepon:</label>
+                <button type="button" class="btn" style="padding: 0.1rem 0.1rem; font-size: 0.7rem;" data-bs-toggle="modal" data-bs-target="#nomortelepon">
                     <i class="bi bi-info-circle"></i>
                 </button>
-                <div class="modal fade" id="nomor_telepon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="nomortelepon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Nominal</h1>
+                                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Nomor Telepon</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Inputan nomor telepon toko!</p>
+                                <p>Inputan nomor telepon toko</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -128,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nomor_telepon" name="nomor_telepon" value="{{ old('nomor_telepon') }}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">
+                <input type="text" id="nomortelepon" name="nomortelepon" value="{{ old('nomor_telepon') ?? $stores->nomor_telepon}}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">{{ old('nomor_telepon') ?? $stores->nomor_telepon}}</input>
                 @error('nomor_telepon')
                 <div class="text-danger">
                     {{$message}}

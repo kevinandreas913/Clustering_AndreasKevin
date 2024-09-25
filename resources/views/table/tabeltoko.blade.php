@@ -17,9 +17,7 @@
                             Tabel Toko
                         </h1>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button"><a href="/toko" style="color: white">Tambah</a></button>
-                            <button class="btn btn-primary me-md-2" type="button"><a href="/kalkulasi" style="color: white">Hitung</a></button>
-                        </div>
+                            <button class="btn btn-primary me-md-2" type="button"><a href="/toko" style="color: white">Tambah</a></button>                        </div>
                     </div>
                 </div>
                 <table class="table table-striped">
@@ -30,10 +28,6 @@
                             <th>Nama Toko</th>
                             <th>Alamat</th>
                             <th>No Telepon</th>
-                            <th>Kesepakatan</th>
-                            <th>Lokasi</th>
-                            <th>Pelayanan</th>
-                            <th>Persetujuan Penitipan</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -45,10 +39,6 @@
                             <th>{{$toko->nama_toko}}</th>
                             <th>{{$toko->alamat}}</th>
                             <th>{{$toko->nomor_telepon}}</th>
-                            <th>{{$toko->kesepakatan}}</th>
-                            <th>{{$toko->lokasi}}</th>
-                            <th>{{$toko->pelayanan}}</th>
-                            <th>{{$toko->hasil}}</th>
                             <th>
                                 <a href="{{ route('view.showtoko', ['toko'=> $toko->id]) }}"><i class="bi bi-eye-fill"></i></a>
                                 <a href="{{ route('edit.edittoko', ['toko'=> $toko->id]) }}"><i class="bi bi-pen-fill"></i></a>

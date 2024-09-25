@@ -22,7 +22,7 @@ class Loginseeder extends Seeder
                 'id' => 1145923,
                 'name' => 'Admin1',
                 'email' => 'Admin1@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('123'),
                 'created_at' => $now,
                 'updated_at' => $now
             ],
