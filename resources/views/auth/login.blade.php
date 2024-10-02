@@ -27,7 +27,7 @@
                     {{ session('failed') }}
                 </div>
                 @endif
-
+                <img src="{{asset('assets/img/dashboardtokobaru.png')}}" alt="Store" class="store-image">
                 <form action="{{ route('login.proses') }}" method="POST">
                     @csrf
                     <div class="mb-3">

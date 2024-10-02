@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <!-- <link href="css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/perfect-scrollbar.min.css')}}">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/style.css')}}">
-    <link defer="" rel="stylesheet" type="text/css" media="screen" href="{{asset('css/animate.css')}}">
-    <script src="{{asset('js/perfect-scrollbar.min.js')}}"></script>
-    <script defer="" src="{{asset('js/popper.min.js')}}"></script>
-    <script defer="" src="{{asset('js/tippy-bundle.umd.min.js')}}"></script>
-    <script defer="" src="{{asset('js/sweetalert.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('assets/css/perfect-scrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('assets/css/style.css')}}">
+    <link defer="" rel="stylesheet" type="text/css" media="screen" href="{{asset('assets/css/animate.css')}}">
+    <script src="{{asset('assets/js/perfect-scrollbar.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/tippy-bundle.umd.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/sweetalert.min.js')}}"></script>
     <style>
         body,
         html {
@@ -887,12 +887,12 @@
         </div>
     </div>
 
-    <script src="{{asset('js/alpine-collaspe.min.js')}}"></script>
-    <script src="{{asset('js/alpine-persist.min.js')}}"></script>
-    <script defer="" src="{{asset('js/alpine-ui.min.js')}}"></script>
-    <script defer="" src="{{asset('js/alpine-focus.min.js')}}"></script>
-    <script defer="" src="{{asset('js/alpine.min.js')}}"></script>
-    <script src="{{asset('js/custom.js')}}"></script>
+    <script src="{{asset('assets/js/alpine-collaspe.min.js')}}"></script>
+    <script src="{{asset('assets/js/alpine-persist.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/alpine-ui.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/alpine-focus.min.js')}}"></script>
+    <script defer="" src="{{asset('assets/js/alpine.min.js')}}"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 
 
     <script>
