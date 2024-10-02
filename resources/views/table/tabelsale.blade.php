@@ -1,4 +1,11 @@
  @include('template.header')
+ <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet"> -->
+ <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+ <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script> -->
+ <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
  </head>
 
  <body>
@@ -33,57 +40,46 @@
                          </div>
                      </div>
                  </div>
-                 <table class="table table-striped">
-                     <thead>
-                         <tr class="text-center">
-                             <th>#</th>
-                             <th>Nama Produk</th>
-                             <th>Nama Toko</th>
-                             <th>Banyak Terjual</th>
-                             <th>Harga Per Unit</th>
-                             <th>Durasi Penjualan</th>
-                             <th>Bulan Periode</th>
-                             <th> </th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         @forelse ($sales as $sale)
-                         <tr>
-                             <th class="text-center">{{$loop->iteration}}</th>
-                             <th>{{$sale->product->nama}}</th>
-                             <th>{{$sale->store->nama_toko}}</th>
-                             <th>{{$sale->banyak_terjual}}</th>
-                             <th>{{'Rp' . number_format($sale->harga_unit, 0, ',', '.')}}</th>
-                             <th>{{$sale->durasi_penjualan}}</th>
-                             <th>{{ \Carbon\Carbon::parse($sale->bulan_periode)->format('F Y') }}</th>
-                             <th>
-                                 <a href="{{ route('view.showsale', ['sale'=> $sale->id]) }}"><i class="bi bi-eye-fill"></i></a>
-                                 <a href="{{ route('edit.editsale', ['sale'=> $sale->id]) }}"><i class="bi bi-pen-fill"></i></a>
+                 <div class="table-responsive">
+                     <table class="table table-striped" id="sales-table">
+                         <thead>
+                             <tr>
+                                 <div class="d-flex">
+                                     <h3>Filter Bulan Disini!</h3>
+                                 </div>
+                             </tr>
+                             <tr>
+                                 <div>
+                                     <input type="month" id="filter_bulan_periode" class="form-control mt-2" style="width: 150px;" value="{{ request('filter_bulan_periode') }}">
+                                 </div>
+                             </tr>
+                             <br>
+                             <tr class="text-center">
+                                 <th>#</th>
+                                 <th>Nama Produk</th>
+                                 <th>Nama Toko</th>
+                                 <th>Banyak Terjual</th>
+                                 <th>Harga Per Unit</th>
+                                 <th>Durasi Penjualan</th>
+                                 <th>
+                                     Bulan Periode
+                                 </th>
+                                 <th></th>
+                             </tr>
+                         </thead>
+                         <tbody>
 
-                                 <!-- bagian ini adalah delete -->
-                                 <a onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus data ini?')) document.getElementById('hapus_{{$sale->id}}').submit();" href="#">
-                                     <i class="bi bi-trash"></i>
-                                 </a>
+                         </tbody>
 
-                                 <form id="hapus_{{$sale->id}}" action="{{ route('hapussale.destroy', ['sale' => $sale->id]) }}" method="POST" style="display: none;">
-                                     @csrf
-                                     @method('DELETE')
-                                 </form>
-
-                                 <!-- bagian ini adalah delete -->
-
-                             </th>
-                         </tr>
-                         @empty
-                         <td colspan="12" class="text-center">Tidak Ada Data...</td>
-                         @endforelse
-                     </tbody>
-
-                 </table>
-                 <div class="d-flex justify-content-end mb-3">
-                     <!-- kembali -->
-                     <a href="/dashboard"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
+                     </table>
                  </div>
+                 <tr>
+                     <br>
+                     <div class="d-flex justify-content-end mb-3">
+                         <!-- kembali -->
+                         <a href="/dashboard"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
+                     </div>
+                 </tr>
              </div>
          </div>
      </div>
@@ -132,7 +128,7 @@
          </div>
      </div>
 
-     <script>
+     <!-- <script>
          document.addEventListener('DOMContentLoaded', function() {
              // Fungsi untuk mendapatkan nilai parameter query dari URL
              function getQueryParam(param) {
@@ -152,8 +148,138 @@
                  }
              }
          });
+
+         document.getElementById('filter_bulan_periode').addEventListener('change', function() {
+             const selectedMonth = this.value; // Ambil nilai bulan yang dipilih
+             const currentUrl = new URL(window.location.href); // Ambil URL saat ini
+             currentUrl.searchParams.set('filter_bulan_periode', selectedMonth); // Set query parameter
+             window.location.href = currentUrl.href; // Redirect dengan parameter baru
+         });
+     </script> -->
+
+     <script>
+         $(document).ready(function() {
+             function getFilterBulan() {
+                 return $('#filter_bulan_periode').val();
+             }
+
+             // Inisialisasi DataTable
+             var table = $('#sales-table').DataTable({
+                 processing: true,
+                 serverSide: true,
+                 responsive: true,
+                 ajax: {
+                     url: "{{ route('table.tabelsale') }}",
+                     data: function(d) {
+                         d.filter_bulan_periode = getFilterBulan();
+                     }
+                 },
+                 columns: [{
+                         data: 'DT_RowIndex',
+                         name: 'DT_RowIndex',
+                         orderable: false,
+                         searchable: false
+                     },
+                     {
+                         data: 'product.nama',
+                         name: 'product.nama'
+                     },
+                     {
+                         data: 'store.nama_toko',
+                         name: 'store.nama_toko'
+                     },
+                     {
+                         data: 'banyak_terjual',
+                         name: 'banyak_terjual'
+                     },
+                     {
+                         data: 'harga_unit',
+                         name: 'harga_unit',
+                         render: function(data, type, row) {
+                             return 'Rp' + parseInt(data).toLocaleString('id-ID');
+                         }
+                     },
+                     {
+                         data: 'durasi_penjualan',
+                         name: 'durasi_penjualan'
+                     },
+                     {
+                         data: 'bulan_periode',
+                         name: 'bulan_periode',
+                         render: function(data, type, row) {
+                             return moment(data).format('MMMM YYYY');
+                         }
+                     },
+                     {
+                         data: 'action',
+                         name: 'action',
+                         orderable: false,
+                         searchable: false
+                     },
+                 ],
+                 order: [
+                     [0, 'desc']
+                 ],
+
+             });
+
+             // Event listener untuk filter bulan
+             $('#filter_bulan_periode').change(function() {
+                 table.ajax.reload();
+             });
+         });
      </script>
 
+     <script>
+         function deleteSale(id) {
+             if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                 // Buat formulir secara dinamis
+                 var form = document.createElement('form');
+                 form.method = 'POST';
+                 form.action = '/salehapus/' + id;
+
+                 // Tambahkan input untuk method DELETE
+                 var methodInput = document.createElement('input');
+                 methodInput.type = 'hidden';
+                 methodInput.name = '_method';
+                 methodInput.value = 'DELETE';
+                 form.appendChild(methodInput);
+
+                 // Tambahkan input untuk CSRF token
+                 var csrfInput = document.createElement('input');
+                 csrfInput.type = 'hidden';
+                 csrfInput.name = '_token';
+                 csrfInput.value = '{{ csrf_token() }}';
+                 form.appendChild(csrfInput);
+
+                 // Tambahkan formulir ke body dan kirim
+                 document.body.appendChild(form);
+                 form.submit();
+             }
+         }
+     </script>
+
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // Mendapatkan URL query parameter
+             const params = new URLSearchParams(window.location.search);
+             const modal = params.get('modal'); // Mengambil nilai modal dari query parameter
+
+             // Cek jika ada nilai modal di URL
+             if (modal) {
+                 // Pilih modal yang sesuai berdasarkan query parameter
+                 const modalElement = document.getElementById(modal);
+
+                 // Jika elemen modal ditemukan, buka modal
+                 if (modalElement) {
+                     const bootstrapModal = new bootstrap.Modal(modalElement);
+                     bootstrapModal.show(); // Buka modal sesuai dengan target
+                 }
+             }
+         });
+     </script>
+     <!-- Pastikan Anda sudah menyertakan moment.js untuk format tanggal -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
  </body>
 
 

@@ -8,7 +8,7 @@ use App\Models\sales;
 use App\Models\stores;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-
+use Yajra\DataTables\Facades\Datatables;
 
 class Salescontroller extends Controller
 {
@@ -43,14 +43,54 @@ class Salescontroller extends Controller
     }
 
     // view
-    public function tabelsale()
-    {
-        $backgroundImage = '/assets/img/salesback.png';
-        $sales = Sales::with(['product', 'store'])->get(); // Mengambil semua data sales dari database beserta relasi
+    // public function tabelsale()
+    // {
+    //     $backgroundImage = '/assets/img/salesback.png';
+    //     $sales = Sales::with(['product', 'store'])->get(); // Mengambil semua data sales dari database beserta relasi
 
-        return view('table.tabelsale', compact('sales', 'backgroundImage')); // Mengirim data toko ke view
+    //     return view('table.tabelsale', compact('sales', 'backgroundImage')); // Mengirim data toko ke view
+    // }
+    public function tabelsale(Request $request)
+    {
+        
+        if($request->ajax()){
+            // Ambil filter bulan dari query string
+            $filterBulan = $request->input('filter_bulan_periode');
+
+            // Query untuk mengambil data sales beserta relasi dengan product dan store
+            $salesQuery = Sales::with(['product', 'store']);
+
+            // Jika ada filter bulan yang dipilih, tambahkan kondisi ke query
+            if ($filterBulan) {
+                $bulan = \Carbon\Carbon::parse($filterBulan)->month;
+                $tahun = \Carbon\Carbon::parse($filterBulan)->year;
+                $salesQuery->whereMonth('bulan_periode', $bulan)
+                ->whereYear('bulan_periode', $tahun);
+            }
+
+            return DataTables::of($salesQuery)
+            ->addIndexColumn()
+            ->addColumn('action', function ($sale) {
+                $viewUrl = route('view.showsale', ['sale' => $sale->id]);
+                $editUrl = route('edit.editsale', ['sale' => $sale->id]);
+                $deleteUrl = route('hapussale.destroy', ['sale' => $sale->id]);
+
+                $buttons = '<a href="' . $viewUrl . '" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i></a> ';
+                $buttons .= '<a href="' . $editUrl . '" class="btn btn-sm btn-warning"><i class="bi bi-pen-fill"></i></a> ';
+                $buttons .= '<button type="button" class="btn btn-sm btn-danger" onclick="deleteSale(' . $sale->id . ')"><i class="bi bi-trash"></i></button>';
+                return $buttons;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+
+        // Mengatur background image
+        $backgroundImage = '/assets/img/salesback.png';
+
+        // Kirim data ke view
+        return view('table.tabelsale', compact('backgroundImage'));
     }
-    
+
     public function showsale(sales $sale)
     {
         $backgroundImage = '/assets/img/salesback.png';

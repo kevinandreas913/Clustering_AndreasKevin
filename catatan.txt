@@ -34,3 +34,4 @@ php artisan route:clear
 php artisan event:clear
 composer clear-cache
 
+datatabel = yarja box laravel datatables

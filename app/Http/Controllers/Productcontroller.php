@@ -18,7 +18,7 @@ class Productcontroller extends Controller
     {
         $validatedata =
         $request->validate([
-            'kode_barang' => 'required|min:3|max:5|unique:products',
+            'kode_barang' => 'required|min:3|max:10|unique:products',
             'nama' => 'required',
             'deskripsi' => '',
             'harga' => 'required|numeric',
@@ -58,7 +58,7 @@ class Productcontroller extends Controller
     public function updatesbarang(Request $request, products $barang)
     {
         $validatedata = $request->validate([
-            'kode_barang' => 'required|min:3|max:5|unique:products,kode_barang,' . $barang->id,
+            'kode_barang' => 'required|min:3|max:10|unique:products,kode_barang,' . $barang->id,
             'nama' => 'required',
             'deskripsi' => '',
             'harga' => 'required',

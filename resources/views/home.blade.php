@@ -334,7 +334,7 @@
                 <div class="h-full bg-white">
                     <div class="flex items-center justify-between px-4 py-3">
                         <a href="index.html" class="main-logo flex shrink-0 items-center">
-                            <span class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 lg:inline">Kerja Praktek</span>
+                            <span class="align-middle text-2xl font-semibold ltr:ml-1.5 rtl:mr-1.5 lg:inline">Sotong Kevin</span>
                         </a>
                     </div>
                     <ul class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold" x-data="{ activeDropdown: 'users' }">
@@ -519,7 +519,7 @@
                             <ul class="flex items-center space-x-2 rtl:space-x-reverse">
                             </ul>
                         </div>
-                        <div x-data="header" class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
+                        <!-- <div x-data="header" class="flex items-center space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2">
                             <div class="sm:ltr:mr-auto sm:rtl:ml-auto" x-data="{ search: false }" @click.outside="search = false">
                                 <form class="absolute inset-x-0 top-1/2 z-10 mx-4 hidden -translate-y-1/2 sm:relative sm:top-0 sm:mx-0 sm:block sm:translate-y-0" :class="{'!block' : search}" @submit.prevent="search = false">
                                     <div class="relative">
@@ -686,7 +686,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- horizontal menu -->
