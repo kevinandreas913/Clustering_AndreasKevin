@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Sales;
+use App\Models\sales;
 use Phpml\Clustering\KMeans;
 use Illuminate\Support\Facades\Log;
 
 function clusteringBarang($bulan_periode)
 {
-    $sales = Sales::where('bulan_periode', $bulan_periode)->get();
+    $sales = sales::where('bulan_periode', $bulan_periode)->get();
     if ($sales->isEmpty()) {
         Log::info('No sales data found for the given month.');
         return 'data tidak ditemukan';

@@ -35,11 +35,11 @@ class sales extends Model
 
     public function product()
     {
-        return $this->belongsTo(Products::class, 'product_id');
+        return $this->belongsTo(products::class, 'product_id');
     }
 
     public function store()
     {
-        return $this->belongsTo(Stores::class, 'store_id');
+        return $this->belongsTo(stores::class, 'store_id');
     }
 }

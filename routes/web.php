@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sale', [Salescontroller::class, 'formsale']);
     Route::post('/salestore', [Salescontroller::class, 'salestore'])->name('sale.store');
 
+    Route::get('/viewtabelsale', [Salescontroller::class, 'viewTableSale'])->name('view.tabelsale');
     Route::get('/tabelsale', [Salescontroller::class, 'tabelsale'])->name('table.tabelsale');
     route::get('/showsale/{sale}', [Salescontroller::class, 'showsale'])->name('view.showsale');
 

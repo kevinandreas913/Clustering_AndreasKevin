@@ -11,7 +11,7 @@ class products extends Model
 
     public function sales()
     {
-        return $this->hasMany(Sales::class, 'product_id');
+        return $this->hasMany(sales::class, 'product_id');
     }
 
     public function stores()

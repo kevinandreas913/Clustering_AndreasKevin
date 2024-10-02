@@ -73,7 +73,7 @@ class Storecontroller extends Controller
     // hapus
     public function destroytoko($id)
     {
-        $stores = Stores::findOrFail($id);
+        $stores = stores::findOrFail($id);
         $storesnama = $stores->nama_toko; // Simpan nama toko sebelum dihapus
         $stores->delete();
 

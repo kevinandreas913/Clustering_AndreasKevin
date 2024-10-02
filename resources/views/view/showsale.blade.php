@@ -40,7 +40,7 @@
                 </h2>
                 <div class="d-flex justify-content-end mb-3">
                     <!-- kembali -->
-                    <a href="/tabelsale"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
+                    <a href="/viewtabelsale"><button type="button" class="btn btn-secondary btn-md">Kembali</button></a>
                 </div>
             </div>
         </div>

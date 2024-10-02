@@ -11,11 +11,11 @@ class stores extends Model
 
     public function sales()
     {
-        return $this->hasMany(Sales::class, 'store_id');
+        return $this->hasMany(sales::class, 'store_id');
     }
 
     public function products()
     {
-        return $this->belongsToMany(Products::class, 'sales')->withPivot('banyak_terjual', 'harga_unit', 'durasi_penjualan');
+        return $this->belongsToMany(products::class, 'sales')->withPivot('banyak_terjual', 'harga_unit', 'durasi_penjualan');
     }
 }

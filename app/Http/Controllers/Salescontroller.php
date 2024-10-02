@@ -8,7 +8,7 @@ use App\Models\sales;
 use App\Models\stores;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Yajra\DataTables\Facades\Datatables;
+use Yajra\DataTables\DataTables;
 
 class Salescontroller extends Controller
 {
@@ -38,7 +38,7 @@ class Salescontroller extends Controller
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
         $validatedata['uuid'] = Str::uuid(); // Generate UUID
 
-        Sales::create($validatedata);
+        sales::create($validatedata);
         return redirect('/sale')->with('berhasil', 'Data berhasil tersimpan');
     }
 
@@ -46,29 +46,35 @@ class Salescontroller extends Controller
     // public function tabelsale()
     // {
     //     $backgroundImage = '/assets/img/salesback.png';
-    //     $sales = Sales::with(['product', 'store'])->get(); // Mengambil semua data sales dari database beserta relasi
+    //     $sales = sales::with(['product', 'store'])->get(); // Mengambil semua data sales dari database beserta relasi
 
     //     return view('table.tabelsale', compact('sales', 'backgroundImage')); // Mengirim data toko ke view
     // }
+
+    public function viewTableSale() {
+        // Mengatur background image
+        $backgroundImage = '/assets/img/salesback.png';
+
+        // Kirim data ke view
+        return view('table.tabelsale', compact('backgroundImage'));
+    }
     public function tabelsale(Request $request)
     {
-        
-        if($request->ajax()){
-            // Ambil filter bulan dari query string
-            $filterBulan = $request->input('filter_bulan_periode');
+        // Ambil filter bulan dari query string
+        $filterBulan = $request->input('filter_bulan_periode');
 
-            // Query untuk mengambil data sales beserta relasi dengan product dan store
-            $salesQuery = Sales::with(['product', 'store']);
+        // Query untuk mengambil data sales beserta relasi dengan product dan store
+        $salesQuery = sales::with(['product', 'store']);
 
-            // Jika ada filter bulan yang dipilih, tambahkan kondisi ke query
-            if ($filterBulan) {
-                $bulan = \Carbon\Carbon::parse($filterBulan)->month;
-                $tahun = \Carbon\Carbon::parse($filterBulan)->year;
-                $salesQuery->whereMonth('bulan_periode', $bulan)
-                ->whereYear('bulan_periode', $tahun);
-            }
+        // Jika ada filter bulan yang dipilih, tambahkan kondisi ke query
+        if ($filterBulan) {
+            $bulan = \Carbon\Carbon::parse($filterBulan)->month;
+            $tahun = \Carbon\Carbon::parse($filterBulan)->year;
+            $salesQuery->whereMonth('bulan_periode', $bulan)
+            ->whereYear('bulan_periode', $tahun);
+        }
 
-            return DataTables::of($salesQuery)
+        return DataTables::of($salesQuery)
             ->addIndexColumn()
             ->addColumn('action', function ($sale) {
                 $viewUrl = route('view.showsale', ['sale' => $sale->id]);
@@ -82,13 +88,6 @@ class Salescontroller extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
-        }
-
-        // Mengatur background image
-        $backgroundImage = '/assets/img/salesback.png';
-
-        // Kirim data ke view
-        return view('table.tabelsale', compact('backgroundImage'));
     }
 
     public function showsale(sales $sale)
@@ -103,8 +102,8 @@ class Salescontroller extends Controller
     // update
     public function updatesale(sales $sale)
     {
-        $products = Products::all();
-        $stores = Stores::all();
+        $products = products::all();
+        $stores = stores::all();
         $backgroundImage = '/assets/img/backformsale.jpg';
 
         return view('edit.editsale',[
@@ -128,7 +127,7 @@ class Salescontroller extends Controller
 
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
 
-        $sale = Sales::where('uuid', $uuid)->firstOrFail();
+        $sale = sales::where('uuid', $uuid)->firstOrFail();
         $sale->update($validatedata);
 
         return redirect()->route('table.tabelsale')->with('berhasil', "Update data berhasil");

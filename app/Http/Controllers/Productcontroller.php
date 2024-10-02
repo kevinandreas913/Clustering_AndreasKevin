@@ -71,7 +71,7 @@ class Productcontroller extends Controller
     // hapus
     public function destroybarang($id)
     {
-        $products = Products::findOrFail($id);
+        $products = products::findOrFail($id);
         $productsnama = $products->nama; // Simpan nama produk sebelum dihapus
         $products->delete();
 

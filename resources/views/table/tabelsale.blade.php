@@ -158,75 +158,77 @@
      </script> -->
 
      <script>
-         $(document).ready(function() {
-             function getFilterBulan() {
-                 return $('#filter_bulan_periode').val();
-             }
-
-             // Inisialisasi DataTable
-             var table = $('#sales-table').DataTable({
-                 processing: true,
-                 serverSide: true,
-                 responsive: true,
-                 ajax: {
-                     url: "{{ route('table.tabelsale') }}",
-                     data: function(d) {
-                         d.filter_bulan_periode = getFilterBulan();
+         function getFilterBulan() {
+             return $('#filter_bulan_periode').val();
+         }
+         // Inisialisasi DataTable
+         const table = $('#sales-table').DataTable({
+             processing: true,
+             serverSide: true,
+             responsive: true,
+             ajax: {
+                 url: "{{ route('table.tabelsale') }}",
+                 data: function(d) {
+                     d.filter_bulan_periode = getFilterBulan();
+                 }
+             },
+             columns: [
+                {
+                     data: 'DT_RowIndex',
+                     name: 'DT_RowIndex',
+                     orderable: false,
+                     searchable: false
+                 },
+                 {
+                     data: 'product.nama',
+                     name: 'product.nama'
+                 },
+                 {
+                     data: 'store.nama_toko',
+                     name: 'store.nama_toko'
+                 },
+                 {
+                     data: 'banyak_terjual',
+                     name: 'banyak_terjual'
+                 },
+                 {
+                     data: 'harga_unit',
+                     name: 'harga_unit',
+                     render: function(data, type, row) {
+                         return 'Rp' + parseInt(data).toLocaleString('id-ID');
                      }
                  },
-                 columns: [{
-                         data: 'DT_RowIndex',
-                         name: 'DT_RowIndex',
-                         orderable: false,
-                         searchable: false
-                     },
-                     {
-                         data: 'product.nama',
-                         name: 'product.nama'
-                     },
-                     {
-                         data: 'store.nama_toko',
-                         name: 'store.nama_toko'
-                     },
-                     {
-                         data: 'banyak_terjual',
-                         name: 'banyak_terjual'
-                     },
-                     {
-                         data: 'harga_unit',
-                         name: 'harga_unit',
-                         render: function(data, type, row) {
-                             return 'Rp' + parseInt(data).toLocaleString('id-ID');
-                         }
-                     },
-                     {
-                         data: 'durasi_penjualan',
-                         name: 'durasi_penjualan'
-                     },
-                     {
-                         data: 'bulan_periode',
-                         name: 'bulan_periode',
-                         render: function(data, type, row) {
-                             return moment(data).format('MMMM YYYY');
-                         }
-                     },
-                     {
-                         data: 'action',
-                         name: 'action',
-                         orderable: false,
-                         searchable: false
-                     },
-                 ],
-                 order: [
-                     [0, 'desc']
-                 ],
+                 {
+                     data: 'durasi_penjualan',
+                     name: 'durasi_penjualan'
+                 },
+                 {
+                     data: 'bulan_periode',
+                     name: 'bulan_periode',
+                     render: function(data, type, row) {
+                         return moment(data).format('MMMM YYYY');
+                     }
+                 },
+                 {
+                     data: 'action',
+                     name: 'action',
+                     orderable: false,
+                     searchable: false
+                 },
+             ],
+             order: [
+                 [0, 'desc']
+             ],
 
-             });
+         });
 
-             // Event listener untuk filter bulan
-             $('#filter_bulan_periode').change(function() {
-                 table.ajax.reload();
-             });
+         // Event listener untuk filter bulan
+         $('#filter_bulan_periode').change(function() {
+             table.ajax.reload();
+         });
+
+         $(document).ready(function() {
+            table();
          });
      </script>
 
