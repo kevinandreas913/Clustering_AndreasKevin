@@ -1084,9 +1084,9 @@
     </div>
 </div>
 
-<script src="/js/alpine-collaspe.min.js"></script>
-<script src="/js/alpine-persist.min.js"></script>
-<script defer="" src="/js/alpine-ui.min.js"></script>
-<script defer="" src="/js/alpine-focus.min.js"></script>
-<script defer="" src="/js/alpine.min.js"></script>
-<script src="/js/custom.js"></script>
+<script src="{{asset('js/alpine-collaspe.min.js')}}"></script>
+<script src="{{asset('js/alpine-persist.min.js')}}"></script>
+<script defer="" src="{{asset('js/alpine-ui.min.js')}}"></script>
+<script defer="" src="{{asset('js/alpine-focus.min.js')}}"></script>
+<script defer="" src="{{asset('js/alpine.min.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>

@@ -9,16 +9,16 @@
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
-    <link defer="" rel="stylesheet" type="text/css" media="screen" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/perfect-scrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/style.css')}}">
+    <link defer="" rel="stylesheet" type="text/css" media="screen" href="{{asset('css/animate.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="/js/perfect-scrollbar.min.js"></script>
-    <script defer="" src="/js/popper.min.js"></script>
-    <script defer="" src="/js/tippy-bundle.umd.min.js"></script>
-    <script defer="" src="/js/sweetalert.min.js"></script>
+    <script src="{{asset('js/perfect-scrollbar.min.js')}}></script>
+    <script defer="" src="{{asset('js/popper.min.js')}}"></script>
+    <script defer="" src="{{asset('js/tippy-bundle.umd.min.js')}}"></script>
+    <script defer="" src="{{asset('js/sweetalert.min.js')}}"></script>
     <style scoped="">
         /* range picker */
 
@@ -58,7 +58,7 @@
         }
 
         body {
-            background-image: url('{{ $backgroundImage }}');
+            background-image: url('{{asset($backgroundImage)}}');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;

@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <!-- <link href="css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
-    <link defer="" rel="stylesheet" type="text/css" media="screen" href="/css/animate.css">
-    <script src="/js/perfect-scrollbar.min.js"></script>
-    <script defer="" src="/js/popper.min.js"></script>
-    <script defer="" src="/js/tippy-bundle.umd.min.js"></script>
-    <script defer="" src="/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/perfect-scrollbar.min.css')}}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/style.css')}}">
+    <link defer="" rel="stylesheet" type="text/css" media="screen" href="{{asset('css/animate.css')}}">
+    <script src="{{asset('js/perfect-scrollbar.min.js')}}"></script>
+    <script defer="" src="{{asset('js/popper.min.js')}}"></script>
+    <script defer="" src="{{asset('js/tippy-bundle.umd.min.js')}}"></script>
+    <script defer="" src="{{asset('js/sweetalert.min.js')}}"></script>
     <style>
         body,
         html {
@@ -848,7 +848,7 @@
                     <div class="card">
                         <div class="d-flex justify-content-center">
                             <div class="card-body">
-                                <img src="/assets/img/dashboardtokobaru.png" alt="Store" class="store-image">
+                                <img src="{{asset('assets/img/dashboardtokobaru.png')}}" alt="Store" class="store-image">
                                 <div id="waterLevel" class="water-level"></div>
                                 <div class="count" id="storeCount">
                                     <h2>Jumlah Toko: </h2>
@@ -863,7 +863,7 @@
                     <div class="card">
                         <div class="d-flex justify-content-center">
                             <div class="card-body">
-                                <img src="/assets/img/dashboardbarang.png" alt="Store" class="store-image">
+                                <img src="{{asset('/assets/img/dashboardbarang.png')}}" alt="Store" class="store-image">
                                 <div id="waterLevel" class="water-level"></div>
                                 <div class="count" id="storeCount">
                                     <h2>Jumlah Produk: </h2>
@@ -878,7 +878,7 @@
             <!-- end isi -->
 
             <!-- start footer section -->
-            <div class="footer p-6 pt-0 mt-auto text-center ltr:sm:text-left rtl:sm:text-right">
+            <div class=" footer p-6 pt-0 mt-auto text-center ltr:sm:text-left rtl:sm:text-right">
                 <div class="flex items-center justify-center">
                     <p class="text-gray-500">© <span id="footer-year">2024</span>. Andreas Kevin. <a href="#" class="hover:underline">Kebijakan Privasi</a></p>
                 </div>
@@ -887,12 +887,12 @@
         </div>
     </div>
 
-    <script src="/js/alpine-collaspe.min.js"></script>
-    <script src="/js/alpine-persist.min.js"></script>
-    <script defer="" src="/js/alpine-ui.min.js"></script>
-    <script defer="" src="/js/alpine-focus.min.js"></script>
-    <script defer="" src="/js/alpine.min.js"></script>
-    <script src="/js/custom.js"></script>
+    <script src="{{asset('js/alpine-collaspe.min.js')}}"></script>
+    <script src="{{asset('js/alpine-persist.min.js')}}"></script>
+    <script defer="" src="{{asset('js/alpine-ui.min.js')}}"></script>
+    <script defer="" src="{{asset('js/alpine-focus.min.js')}}"></script>
+    <script defer="" src="{{asset('js/alpine.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 
 
     <script>
