@@ -77,7 +77,7 @@
             <!-- Durasi Penjualan -->
             <div class="form-group mb-3">
                 <label for="durasi_penjualan">Durasi Penjualan (dalam hari):</label>
-                <input type="text" id="durasi_penjualan" name="durasi_penjualan" value="{{ old('durasi_penjualan') }}" placeholder="Masukkan durasi penjualan konsinyasi" class="form-control @error('durasi_penjualan') is-invalid @enderror">
+                <input type="number" id="durasi_penjualan" name="durasi_penjualan" value="{{ old('durasi_penjualan') }}" placeholder="Masukkan durasi penjualan konsinyasi" class="form-control @error('durasi_penjualan') is-invalid @enderror">
                 @error('durasi_penjualan')
                 <div class="text-danger">
                     {{$message}}
@@ -99,7 +99,7 @@
             <!-- Submit -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">SUBMIT</button>
-                <a href="/tabelsale"><button type="button" class="btn btn-secondary">KEMBALI</button></a>
+                <a href="/viewtabelsale"><button type="button" class="btn btn-secondary">KEMBALI</button></a>
             </div>
         </form>
     </div>

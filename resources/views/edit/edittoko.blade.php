@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nomortelepon" name="nomortelepon" value="{{ old('nomor_telepon') ?? $stores->nomor_telepon}}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">{{ old('nomor_telepon') ?? $stores->nomor_telepon}}</input>
+                <input type="number" id="nomortelepon" name="nomortelepon" value="{{ old('nomor_telepon') ?? $stores->nomor_telepon}}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">
                 @error('nomor_telepon')
                 <div class="text-danger">
                     {{$message}}

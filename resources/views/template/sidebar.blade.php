@@ -812,7 +812,7 @@
                                         <a href="/tabeltoko">Data Toko</a>
                                     </li>
                                     <li>
-                                        <a href="/tabelsale">Data Penjualan</a>
+                                        <a href="/viewtabelsale">Data Penjualan</a>
                                     </li>
                                     <li>
                                         <a href="datatables-order-sorting.html">Order Sorting</a>

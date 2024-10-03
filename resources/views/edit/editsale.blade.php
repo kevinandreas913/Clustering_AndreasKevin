@@ -215,7 +215,7 @@
             <!-- submit -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">SUBMIT</button>
-                <a href="/tabelsale"><button type="button" class="btn btn-secondary">KEMBALI</button></a>
+                <a href="/viewtabelsale"><button type="button" class="btn btn-secondary">KEMBALI</button></a>
             </div>
         </form>
     </div>

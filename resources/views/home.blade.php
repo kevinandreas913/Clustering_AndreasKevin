@@ -392,7 +392,7 @@
                                     <a href="/tabeltoko">Data Toko</a>
                                 </li>
                                 <li>
-                                    <a href="/tabelsale">Data Penjualan</a>
+                                    <a href="/viewtabelsale">Data Penjualan</a>
                                 </li>
                             </ul>
                         </li>
@@ -453,10 +453,10 @@
                             </button>
                             <ul x-cloak="" x-show="activeDropdown === 'users'" x-collapse="" class="sub-menu text-gray-500">
                                 <li>
-                                    <a href="/tabelsale?modal=clusteringModaltoko">Analisa Penjualan Toko</a>
+                                    <a href="/viewtabelsale?modal=clusteringModaltoko">Analisa Penjualan Toko</a>
                                 </li>
                                 <li>
-                                    <a href="/tabelsale?modal=clusteringModalbarang">Analisa Penjualan Produk</a>
+                                    <a href="/viewtabelsale?modal=clusteringModalbarang">Analisa Penjualan Produk</a>
                                 </li>
                                 <li>
                                     <a href="/analisa">Analisa Toko</a>
@@ -747,7 +747,7 @@
                                             <a href="/tabeltoko">Data Toko</a>
                                         </li>
                                         <li>
-                                            <a href="/tabelsale">Data Penjualan</a>
+                                            <a href="/viewtabelsale">Data Penjualan</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -804,10 +804,10 @@
                                     <a href="/kalkulasi">Kelayakan Penitipan</a>
                                 </li>
                                 <li>
-                                    <a href="/tabelsale?modal=clusteringModaltoko">Analisa Penjualan Toko</a>
+                                    <a href="/viewtabelsale?modal=clusteringModaltoko">Analisa Penjualan Toko</a>
                                 </li>
                                 <li>
-                                    <a href="/tabelsale?modal=clusteringModalbarang">Analisa Penjualan Produk</a>
+                                    <a href="/viewtabelsale?modal=clusteringModalbarang">Analisa Penjualan Produk</a>
                                 </li>
                                 <li>
                                     <a href="/analisa">Analisa Toko</a>

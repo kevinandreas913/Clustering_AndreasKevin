@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->char('kode_barang', 9)->unique();
+            $table->char('kode_barang', 100)->unique();
             $table->string('nama'); 
             $table->text('deskripsi')->nullable();
             $table->decimal('harga', 10, 2)->nullable();
@@ -23,7 +23,7 @@ return new class extends Migration
 
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->char('kode_toko', 9)->unique();
+            $table->char('kode_toko', 100)->unique();
             $table->string('nama_toko'); 
             $table->string('alamat')->nullable();
             $table->string('nomor_telepon')->nullable();

@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <textarea id="alamat" name="alamat" value="{{ old('alamat') }}" placeholder="Masukkan rincian alamat toko!" class="form-control @error('alamat') is-invalid @enderror"></textarea>
+                <textarea id="alamat" name="alamat" placeholder="Masukkan rincian alamat toko!" class="form-control @error('alamat') is-invalid @enderror"></textarea>
                 @error('alamat')
                 <div class="text-danger">
                     {{$message}}
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nomor_telepon" name="nomor_telepon" value="{{ old('nomor_telepon') }}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">
+                <input type="number" id="nomor_telepon" name="nomor_telepon" value="{{ old('nomor_telepon') }}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">
                 @error('nomor_telepon')
                 <div class="text-danger">
                     {{$message}}

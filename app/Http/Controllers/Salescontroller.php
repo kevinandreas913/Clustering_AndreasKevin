@@ -28,11 +28,12 @@ class Salescontroller extends Controller
         $validatedata = $request->validate([
             'product_id' => 'required|exists:products,id',
             'store_id' => 'required|exists:stores,id',
-            'banyak_terjual' => 'required|integer|min:1',
-            'harga_unit' => 'required|numeric|min:0',
-            'durasi_penjualan' => 'nullable|integer|min:0',
+            'banyak_terjual' => 'required|integer|min:1|max:9999',
+            'harga_unit' => 'required|numeric|min:1|max:9999999.99',
+            'durasi_penjualan' => 'required|integer|min:1|max:999',
             'bulan_periode' => 'required|date_format:Y-m',
         ]);
+            
 
         // Ubah bulan_periode menjadi format YYYY-MM-DD dengan hari default 01
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
@@ -119,27 +120,35 @@ class Salescontroller extends Controller
         $validatedata = $request->validate([
             'product_id' => 'required|exists:products,id',
             'store_id' => 'required|exists:stores,id',
-            'banyak_terjual' => 'required|integer|min:1',
-            'harga_unit' => 'required|numeric|min:0',
-            'durasi_penjualan' => 'nullable|integer|min:0',
+            'banyak_terjual' => 'required|integer|min:1|max:9999',
+            'harga_unit' => 'required|numeric|min:1|max:9999999.99',
+            'durasi_penjualan' => 'required|integer|min:1|max:999',
             'bulan_periode' => 'required|date_format:Y-m',
         ]);
+
+        // $validatedata = $request->validate([
+        //     'product_id' => 'required|exists:products,id',
+        //     'store_id' => 'required|exists:stores,id',
+        //     'banyak_terjual' => 'required|integer|min:1|max:9999',
+        //     'harga_unit' => 'required|numeric|min:1|max:9999999.99',
+        //     'durasi_penjualan' => 'required|integer|min:0|max:99',
+        //     'bulan_periode' => 'required|date_format:Y-m',
+        // ]);
 
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
 
         $sale = sales::where('uuid', $uuid)->firstOrFail();
         $sale->update($validatedata);
 
-        return redirect()->route('table.tabelsale')->with('berhasil', "Update data berhasil");
+        return redirect()->route('view.tabelsale')->with('berhasil', "Update data berhasil");
     }
-
 
     // hapus
     public function destroysale($id)
     {
         $sales = sales::findOrFail($id);
         $sales->delete();
-        return redirect()->route('table.tabelsale')->with('berhasil', "Data berhasil dihapus");
+        return redirect()->route('view.tabelsale')->with('berhasil', "Data berhasil dihapus");
     }
 
     // clustering toko
@@ -156,14 +165,14 @@ class Salescontroller extends Controller
 
         if (!file_exists($phpScript)) {
             Log::error('Clustering script not found at: ' . $phpScript);
-            return redirect()->route('table.tabelsale')->with('error', 'Clustering script not found.');
+            return redirect()->route('view.tabelsale')->with('error', 'Clustering script not found.');
         }
 
         require_once $phpScript;
 
         $result = clusteringToko($bulan_periode);
         if ($result === 'data tidak ditemukan') {
-            return redirect()->route('table.tabelsale')->with('error', 'Data tidak ditemukan.');
+            return redirect()->route('view.tabelsale')->with('error', 'Data tidak ditemukan.');
         }
 
         Log::info('Result of clustering:', $result);
@@ -213,14 +222,14 @@ class Salescontroller extends Controller
 
         if (!file_exists($phpScript)) {
             Log::error('Clustering script not found at: ' . $phpScript);
-            return redirect()->route('table.tabelsale')->with('error', 'Clustering script not found.');
+            return redirect()->route('view.tabelsale')->with('error', 'Clustering script not found.');
         }
 
         require_once $phpScript;
 
         $result = clusteringBarang($bulan_periode);
         if ($result === 'data tidak ditemukan') {
-            return redirect()->route('table.tabelsale')->with('error', 'Data tidak ditemukan.');
+            return redirect()->route('view.tabelsale')->with('error', 'Data tidak ditemukan.');
         }
 
         Log::info('Result of clustering:', $result);

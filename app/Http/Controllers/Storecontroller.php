@@ -20,12 +20,14 @@ class Storecontroller extends Controller
     public function tokostore(Request $request)
     {
         $validatedata =
-            $request->validate([
-                'kode_toko' => 'required|min:3|max:6|unique:stores',
-                'nama_toko' => 'required',
-                'alamat' => '',
-                'nomor_telepon' => '',
-            ]);
+        $request->validate([
+            'kode_toko' => 'required|min:3|max:6|unique:stores',
+            'nama_toko' => 'required',
+            'alamat' => '',
+            'nomor_telepon' => 'numeric|min:1',
+        ], [
+            'nomor_telepon.numeric' => 'The nomor telepon need numberic',
+        ]);
 
         stores::create($validatedata);
         return redirect('/toko')->with('berhasil', 'Data berhasil tersimpan');
@@ -59,12 +61,22 @@ class Storecontroller extends Controller
 
     public function updatestoko(Request $request, stores $toko)
     {
-        $validatedata = $request->validate([
+        $validatedata =
+        $request->validate([
             'kode_toko' => 'required|min:3|max:6|unique:stores,kode_toko,' . $toko->id,
             'nama_toko' => 'required',
             'alamat' => '',
-            'nomor_telepon' => '',
+            'nomor_telepon' => 'numeric|min:1',
+        ], [
+            'nomor_telepon.numeric' => 'The nomor telepon need numberic',
         ]);
+
+        // $validatedata = $request->validate([
+        //     'kode_toko' => 'required|min:3|max:6|unique:stores,kode_toko,' . $toko->id,
+        //     'nama_toko' => 'required',
+        //     'alamat' => '',
+        //     'nomor_telepon' => '',
+        // ]);
 
         stores::where('id', $toko->id)->update($validatedata);
         return redirect()->route('table.tabeltoko', ['stores' => $toko->id])->with('berhasil', "Update data {$validatedata['nama_toko']} berhasil");

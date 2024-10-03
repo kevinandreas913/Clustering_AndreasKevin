@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <textarea id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" placeholder="Masukkan rincian barang dagang tersebut!" class="form-control @error('deskripsi') is-invalid @enderror"></textarea>
+                <textarea id="deskripsi" name="deskripsi" placeholder="Masukkan rincian barang dagang tersebut!" class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi') }}</textarea>
                 @error('deskripsi')
                 <div class="text-danger">
                     {{$message}}

@@ -18,10 +18,12 @@ class Productcontroller extends Controller
     {
         $validatedata =
         $request->validate([
-            'kode_barang' => 'required|min:3|max:10|unique:products',
+            'kode_barang' => 'required|min:3|max:9|unique:products',
             'nama' => 'required',
             'deskripsi' => '',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:1|max:9999999.99',
+        ], [
+            'harga.max' => 'The harga is to long',
         ]);
 
         products::create($validatedata);
@@ -58,11 +60,20 @@ class Productcontroller extends Controller
     public function updatesbarang(Request $request, products $barang)
     {
         $validatedata = $request->validate([
-            'kode_barang' => 'required|min:3|max:10|unique:products,kode_barang,' . $barang->id,
+            'kode_barang' => 'required|min:3|max:9|unique:products,kode_barang,' . $barang->id,
             'nama' => 'required',
             'deskripsi' => '',
-            'harga' => 'required',
+            'harga' => 'required|numeric|min:1|max:9999999.99',
+        ], [
+            'harga.max' => 'The harga is to long',
         ]);
+
+        // $validatedata = $request->validate([
+        //     'kode_barang' => 'required|min:3|max:10|unique:products,kode_barang,' . $barang->id,
+        //     'nama' => 'required',
+        //     'deskripsi' => '',
+        //     'harga' => 'required',
+        // ]);
 
         products::where('id', $barang->id)->update($validatedata);
         return redirect()->route('table.tabelbarang', ['products' => $barang->id])->with('berhasil', "Update data {$validatedata['nama']} berhasil");
@@ -71,6 +82,7 @@ class Productcontroller extends Controller
     // hapus
     public function destroybarang($id)
     {
+
         $products = products::findOrFail($id);
         $productsnama = $products->nama; // Simpan nama produk sebelum dihapus
         $products->delete();
