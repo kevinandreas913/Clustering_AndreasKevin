@@ -2,6 +2,12 @@
 </head>
 
 <body>
+    @if ($message)
+    <div class="alert alert-danger">
+        {{ $message }}
+    </div>
+    @endif
+
     <div class="container">
         <form method="GET" action="{{ url('/analisa') }}">
             <div class="form-group">

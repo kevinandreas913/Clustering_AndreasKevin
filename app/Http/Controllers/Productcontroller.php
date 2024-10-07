@@ -23,13 +23,12 @@ class Productcontroller extends Controller
             'deskripsi' => '',
             'harga' => 'required|numeric|min:1|max:9999999.99',
         ], [
-            'harga.max' => 'The harga is to long',
+            'harga.max' => 'The nominal is to long',
         ]);
 
         products::create($validatedata);
         return redirect('/barang')->with('berhasil', 'Data berhasil tersimpan');
     }
-
 
     // view
     public function tabelbarang()
@@ -65,7 +64,7 @@ class Productcontroller extends Controller
             'deskripsi' => '',
             'harga' => 'required|numeric|min:1|max:9999999.99',
         ], [
-            'harga.max' => 'The harga is to long',
+            'harga.max' => 'The nominal is to long',
         ]);
 
         // $validatedata = $request->validate([

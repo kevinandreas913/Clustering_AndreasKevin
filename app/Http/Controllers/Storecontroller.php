@@ -24,9 +24,9 @@ class Storecontroller extends Controller
             'kode_toko' => 'required|min:3|max:6|unique:stores',
             'nama_toko' => 'required',
             'alamat' => '',
-            'nomor_telepon' => 'numeric|min:1',
+            'nomor_telepon' => 'nullable|numeric|min:1',
         ], [
-            'nomor_telepon.numeric' => 'The nomor telepon need numberic',
+            'nomor_telepon.numeric' => 'The nomor telepon must be numberic',
         ]);
 
         stores::create($validatedata);
@@ -37,8 +37,8 @@ class Storecontroller extends Controller
     public function tabeltoko()
     {
         $backgroundImage = '/assets/img/backtabeltoko.jpg';
-        $stores = stores::all(); // Mengambil semua data toko dari database
-        return view('table.tabeltoko', compact('stores'), compact('backgroundImage')); // Mengirim data toko ke view
+        $stores = stores::all(); 
+        return view('table.tabeltoko', compact('stores'), compact('backgroundImage')); 
     }
     public function showtoko(stores $toko)
     {
@@ -66,17 +66,10 @@ class Storecontroller extends Controller
             'kode_toko' => 'required|min:3|max:6|unique:stores,kode_toko,' . $toko->id,
             'nama_toko' => 'required',
             'alamat' => '',
-            'nomor_telepon' => 'numeric|min:1',
+            'nomor_telepon' => 'nullable|numeric|min:1',
         ], [
-            'nomor_telepon.numeric' => 'The nomor telepon need numberic',
+            'nomor_telepon.numeric' => 'The nomor telepon must be numberic',
         ]);
-
-        // $validatedata = $request->validate([
-        //     'kode_toko' => 'required|min:3|max:6|unique:stores,kode_toko,' . $toko->id,
-        //     'nama_toko' => 'required',
-        //     'alamat' => '',
-        //     'nomor_telepon' => '',
-        // ]);
 
         stores::where('id', $toko->id)->update($validatedata);
         return redirect()->route('table.tabeltoko', ['stores' => $toko->id])->with('berhasil', "Update data {$validatedata['nama_toko']} berhasil");
@@ -86,7 +79,7 @@ class Storecontroller extends Controller
     public function destroytoko($id)
     {
         $stores = stores::findOrFail($id);
-        $storesnama = $stores->nama_toko; // Simpan nama toko sebelum dihapus
+        $storesnama = $stores->nama_toko; 
         $stores->delete();
 
         return redirect()->route('table.tabeltoko')->with('berhasil', "Hapus data $storesnama berhasil");

@@ -4,7 +4,7 @@ yang harus diperbaiki:
 3. form harus dapat mengisi nominal dengan . otomatis, saat ini hanya formbarang dan formsale yang sudah diperbaiki, ingat selain form masih harus ubah bagian edit juga. untuk controller sudah aman
 4. AI masih tidak mau jalan semestinya, yang terbuat adalah di web.php, APP/"Services/OpenAIService.php", Controller=AIController, .env=OPENAI_API_KEY=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, service.php='openai' => [
         'api_key' => env('OPENAI_API_KEY'), 
-    ], dan clusteringbarang.blade.php.
+], dan clusteringbarang.blade.php.
 
 yang belum dibuat:
 1. buat kesimpulan otomatis dari clustering toko dan clustering barang.

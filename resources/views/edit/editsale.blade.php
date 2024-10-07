@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="number" id="banyak_terjual" name="banyak_terjual" value="{{ old('banyak_terjual') ?? $sales->banyak_terjual }}" placeholder="Masukkan jumlah produk terjual" class="form-control @error('banyak_terjual') is-invalid @enderror">
+                <input type="number" id="banyak_terjual" name="banyak_terjual" value="{{ old('banyak_terjual') ?? $sales->banyak_terjual }}" placeholder="Masukkan jumlah produk terjual" class="form-control @error('banyak_terjual') is-invalid @enderror" style="width: 50%">
                 @error('banyak_terjual')
                 <div class="text-danger">
                     {{$message}}
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" step="0.01" id="harga_unit" name="harga_unit" value="{{ old('harga_unit') ?? $sales->harga_unit }}" placeholder="Masukkan harga unit produk pada toko tersebut" class="form-control @error('harga_unit') is-invalid @enderror" oninput="formatRupiah(this)">
+                <input type="text" step="0.01" id="harga_unit" name="harga_unit" value="{{ old('harga_unit') ?? $sales->harga_unit }}" placeholder="Masukkan harga unit produk pada toko tersebut" class="form-control @error('harga_unit') is-invalid @enderror" oninput="formatRupiah(this)" style="width: 50%">
                 @error('harga_unit')
                 <div class="text-danger">
                     {{$message}}
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="number" id="durasi_penjualan" name="durasi_penjualan" value="{{ old('durasi_penjualan') ?? $sales->durasi_penjualan }}" placeholder="Masukkan durasi penjualan" class="form-control @error('durasi_penjualan') is-invalid @enderror">
+                <input type="number" id="durasi_penjualan" name="durasi_penjualan" value="{{ old('durasi_penjualan') ?? $sales->durasi_penjualan }}" placeholder="Masukkan durasi penjualan" class="form-control @error('durasi_penjualan') is-invalid @enderror" style="width: 50%">
                 @error('durasi_penjualan')
                 <div class="text-danger">
                     {{$message}}
@@ -204,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="month" id="bulan_periode" name="bulan_periode" value="{{ old('bulan_periode') ?? $sales->bulan_periode }}" class="form-control @error('bulan_periode') is-invalid @enderror">
+                <input type="month" id="bulan_periode" name="bulan_periode" value="{{ old('bulan_periode') ?? $sales->bulan_periode }}" class="form-control @error('bulan_periode') is-invalid @enderror" style="width: 50%">
                 @error('bulan_periode')
                 <div class="text-danger">
                     {{$message}}

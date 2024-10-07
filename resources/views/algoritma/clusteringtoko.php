@@ -37,39 +37,53 @@ function clusteringToko($bulan_periode)
     // Menggunakan seed untuk KMeans agar hasil konsisten
     mt_srand(42);
 
-    $kmeans = new KMeans(3);
-    $clusters = $kmeans->cluster($samples);
+    if (count($samples) >= 3) {
+        $kmeans = new KMeans(3);
+        $clusters = $kmeans->cluster($samples);
 
-    // Menghitung rata-rata penjualan dari setiap cluster untuk menentukan label secara dinamis
-    $clusterSums = [];
-    foreach ($clusters as $index => $cluster) {
-        $totalPenjualan = 0;
-        foreach ($cluster as $key => $item) {
-            $totalPenjualan += $storeData[$key]['banyak_terjual'];
+        $clusterSums = [];
+        foreach ($clusters as $index => $cluster) {
+            $totalPenjualan = 0;
+
+            if (count($cluster) > 0) {
+                foreach ($cluster as $key => $item) {
+                    $totalPenjualan += $storeData[$key]['banyak_terjual'];
+                }
+                $clusterSums[$index] = $totalPenjualan / count($cluster);
+            } else {
+                $clusterSums[$index] = 0;
+            }
         }
-        $clusterSums[$index] = $totalPenjualan / count($cluster); // Rata-rata penjualan per cluster
-    }
 
-    // Mengurutkan index cluster berdasarkan nilai rata-rata penjualan (desc untuk ramai, normal, sepi)
-    arsort($clusterSums);
-    $sortedClusterIndexes = array_keys($clusterSums);
+        arsort($clusterSums);
+        $sortedClusterIndexes = array_keys($clusterSums);
 
-    // Tetapkan label berdasarkan urutan cluster
-    $labels = ['Toko Ramai', 'Toko Normal', 'Toko Sepi'];
-    $clusterToLabel = [];
-    foreach ($sortedClusterIndexes as $i => $clusterIndex) {
-        $clusterToLabel[$clusterIndex] = $labels[$i];
-    }
+        $labels = ['Toko Ramai', 'Toko Normal', 'Toko Sepi'];
+        $clusterToLabel = [];
+        foreach ($sortedClusterIndexes as $i => $clusterIndex) {
+            $clusterToLabel[$clusterIndex] = $labels[$i];
+        }
 
-    // Membuat hasil akhir dengan label yang sesuai
-    $result = [];
-    foreach ($clusters as $index => $cluster) {
-        foreach ($cluster as $key => $item) {
+        $result = [];
+        foreach ($clusters as $index => $cluster) {
+            foreach ($cluster as $key => $item) {
+                $result[] = [
+                    'nama_toko' => $storeNames[$storeData[$key]['store_id']],
+                    'banyak_terjual' => $storeData[$key]['banyak_terjual'],
+                    'durasi_penjualan' => $storeData[$key]['durasi_penjualan'],
+                    'cluster' => $clusterToLabel[$index]
+                ];
+            }
+        }
+    } else {
+        // Jika data kurang dari 3, semua toko dimasukkan ke dalam cluster "Toko Ramai"
+        $result = [];
+        foreach ($storeData as $key => $item) {
             $result[] = [
-                'nama_toko' => $storeNames[$storeData[$key]['store_id']],
-                'banyak_terjual' => $storeData[$key]['banyak_terjual'],
-                'durasi_penjualan' => $storeData[$key]['durasi_penjualan'],
-                'cluster' => $clusterToLabel[$index] 
+                'nama_toko' => $storeNames[$item['store_id']],
+                'banyak_terjual' => $item['banyak_terjual'],
+                'durasi_penjualan' => $item['durasi_penjualan'],
+                'cluster' => 'Toko Ramai' 
             ];
         }
     }
@@ -78,6 +92,3 @@ function clusteringToko($bulan_periode)
 
     return $result;
 }
-
-
-

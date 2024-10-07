@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <input type="text" id="kode_barang" name="kode_barang" value="{{ old('kode_barang') ?? $products->kode_barang}}" placeholder="Masukkan kode barang!" class="form-control @error('kode_barang') is-invalid @enderror">
+                <input type="text" id="kode_barang" name="kode_barang" value="{{ old('kode_barang') ?? $products->kode_barang}}" placeholder="Kode minimal 3 dan maximal 9!" class="form-control @error('kode_barang') is-invalid @enderror" style="width: 50%;">
                 @error('kode_barang')
                 <div class="text-danger">
                     {{$message}}
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nama" name="nama" value="{{ old('nama') ?? $products->nama}}" placeholder="Masukkan nama barang!" class="form-control @error('nama') is-invalid @enderror">
+                <input type="text" id="nama" name="nama" value="{{ old('nama') ?? $products->nama}}" placeholder="Masukkan nama barang!" class="form-control @error('nama') is-invalid @enderror" style="width: 80%;">
                 @error('nama')
                 <div class="text-danger">
                     {{$message}}
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="harga" name="harga" value="{{ old('harga') ?? $products->harga}}" placeholder="Masukkan nominal disini! (contoh 150000)" class="form-control @error('harga') is-invalid @enderror" oninput="formatRupiah(this)">
+                <input type="text" id="harga" name="harga" value="{{ old('harga') ?? $products->harga}}" placeholder="Masukkan nominal disini! (contoh 150000)" class="form-control @error('harga') is-invalid @enderror" oninput="formatRupiah(this)" style="width: 50%;">
                 @error('harga')
                 <div class="text-danger">
                     {{$message}}

@@ -25,7 +25,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Inputan kode toko anda!</p>
+                                <p>Inputan kode toko anda minimal 3 karakter, maksimal 6 karakter!</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <input type="text" id="kode_toko" name="kode_toko" value="{{ old('kode_toko') ?? $stores->kode_toko}}" placeholder="Masukkan kode barang!" class="form-control @error('kode_toko') is-invalid @enderror">
+                <input type="text" id="kode_toko" name="kode_toko" value="{{ old('kode_toko') ?? $stores->kode_toko}}" placeholder="Mimimal 3, maksimal 6 karakter" class="form-control @error('kode_toko') is-invalid @enderror" style="width: 50%;">
                 @error('kode_toko')
                 <div class="text-danger">
                     {{$message}}
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="nama_toko" name="nama_toko" value="{{ old('nama_toko') ?? $stores->nama_toko}}" placeholder="Masukkan nama toko!" class="form-control @error('nama_toko') is-invalid @enderror">
+                <input type="text" id="nama_toko" name="nama_toko" value="{{ old('nama_toko') ?? $stores->nama_toko}}" placeholder="Masukkan nama toko!" class="form-control @error('nama_toko') is-invalid @enderror" style="width: 80%;">
                 @error('nama_toko')
                 <div class="text-danger">
                     {{$message}}
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="number" id="nomortelepon" name="nomortelepon" value="{{ old('nomor_telepon') ?? $stores->nomor_telepon}}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror">
+                <input type="number" id="nomortelepon" name="nomortelepon" value="{{ old('nomor_telepon') ?? $stores->nomor_telepon}}" placeholder="Masukkan nomor telepon disini!" class="form-control @error('nomor_telepon') is-invalid @enderror" style="width: 80%;">
                 @error('nomor_telepon')
                 <div class="text-danger">
                     {{$message}}

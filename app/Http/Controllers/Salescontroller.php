@@ -34,8 +34,6 @@ class Salescontroller extends Controller
             'bulan_periode' => 'required|date_format:Y-m',
         ]);
             
-
-        // Ubah bulan_periode menjadi format YYYY-MM-DD dengan hari default 01
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
         $validatedata['uuid'] = Str::uuid(); // Generate UUID
 
@@ -43,31 +41,17 @@ class Salescontroller extends Controller
         return redirect('/sale')->with('berhasil', 'Data berhasil tersimpan');
     }
 
-    // view
-    // public function tabelsale()
-    // {
-    //     $backgroundImage = '/assets/img/salesback.png';
-    //     $sales = sales::with(['product', 'store'])->get(); // Mengambil semua data sales dari database beserta relasi
-
-    //     return view('table.tabelsale', compact('sales', 'backgroundImage')); // Mengirim data toko ke view
-    // }
-
     public function viewTableSale() {
-        // Mengatur background image
         $backgroundImage = '/assets/img/salesback.png';
 
-        // Kirim data ke view
         return view('table.tabelsale', compact('backgroundImage'));
     }
     public function tabelsale(Request $request)
     {
-        // Ambil filter bulan dari query string
         $filterBulan = $request->input('filter_bulan_periode');
 
-        // Query untuk mengambil data sales beserta relasi dengan product dan store
         $salesQuery = sales::with(['product', 'store']);
 
-        // Jika ada filter bulan yang dipilih, tambahkan kondisi ke query
         if ($filterBulan) {
             $bulan = \Carbon\Carbon::parse($filterBulan)->month;
             $tahun = \Carbon\Carbon::parse($filterBulan)->year;
@@ -125,15 +109,6 @@ class Salescontroller extends Controller
             'durasi_penjualan' => 'required|integer|min:1|max:999',
             'bulan_periode' => 'required|date_format:Y-m',
         ]);
-
-        // $validatedata = $request->validate([
-        //     'product_id' => 'required|exists:products,id',
-        //     'store_id' => 'required|exists:stores,id',
-        //     'banyak_terjual' => 'required|integer|min:1|max:9999',
-        //     'harga_unit' => 'required|numeric|min:1|max:9999999.99',
-        //     'durasi_penjualan' => 'required|integer|min:0|max:99',
-        //     'bulan_periode' => 'required|date_format:Y-m',
-        // ]);
 
         $validatedata['bulan_periode'] = $validatedata['bulan_periode'] . '-01';
 
