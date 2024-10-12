@@ -46,7 +46,8 @@ php artisan serve
 ## 📖 Penggunaan
 Manajemen Produk: Di halaman produk, Anda dapat menambahkan, mengedit, dan menghapus produk sesuai kebutuhan.
 Manajemen Toko: Di halaman toko, Anda dapat menambahkan toko baru dengan detail seperti kode, nama, alamat, dan nomor telepon.
-Pencatatan Penjualan: Di halaman penjualan, Anda dapat memasukkan jumlah produk terjual dan menghubungkannya dengan toko dan produk.
+Pencatatan Penjualan: Di halaman penjualan, Anda dapat memasukkan jumlah produk terjual berdasarkan periode tertentu.
+Clustering Produk dan Penjualan: Di halaman penjualan, Anda dapat memilih bulan untuk ditampilkan hasil.
 
 ## 🤝 Kontribusi
 Kontribusi sangat diterima! Jika Anda ingin berkontribusi, ikuti langkah-langkah berikut:
