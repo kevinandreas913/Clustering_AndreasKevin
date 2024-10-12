@@ -61,7 +61,6 @@ Push ke branch (git push origin feature-branch) <br>
 Buat Pull Request <br>
 
 ## 📝 Lisensi
-Proyek ini dilisensikan di bawah MIT License.
 
 ## ✨ Terima kasih telah menggunakan dan berkontribusi pada proyek ini! ✨
 
