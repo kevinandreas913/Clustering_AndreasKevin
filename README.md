@@ -1,66 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Clustering K-Means Mitra Konsinyasi & Produk
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Konsinyasi Toko & Penjualan ini adalah platform manajemen barang konsinyasi yang membantu toko dan penjual dalam mengelola penjualan produk secara lebih efisien. Proyek ini dibangun menggunakan Laravel dan berfungsi untuk menangani semua proses dari pencatatan produk, penjualan, hingga laporan penjualan.
 
-## About Laravel
+## 🎯 Fitur Utama
+Manajemen Produk: Tambah, ubah, dan hapus produk dengan validasi yang tepat.
+Manajemen Toko: Tambah, ubah, dan hapus toko dengan informasi lengkap.
+Manajemen Penjualan: Mencatat penjualan per toko, produk, dan periode tertentu.
+Peringatan Penghapusan: Cegah penghapusan produk atau toko yang sudah terkait dengan penjualan.
+Validasi Input: Validasi form yang ketat untuk mencegah data yang salah atau tidak lengkap.
+Antarmuka Sederhana: Desain antarmuka yang bersih dan responsif untuk memudahkan penggunaan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🔧 Teknologi yang Digunakan
+Backend: Laravel - PHP Framework
+Database: MySQL
+Frontend: Blade Template
+Version Control: Git & GitHub
+Deployment: https://clusteringandreaskevin.vercel.app/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Instalasi
+Untuk menjalankan proyek ini di mesin lokal Anda, ikuti langkah-langkah berikut:
+### 1. Salin URL Repositori
+Salin alamat URL berikut untuk meng-clone repositori ini:
+https://github.com/kevinandreas913/Clustering_AndreasKevin.git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Clone Repositori
+Buka terminal atau command prompt di komputer Anda, lalu jalankan perintah berikut untuk meng-clone repositori ini ke folder lokal:
+git clone https://github.com/kevinandreas913/Clustering_AndreasKevin.git
 
-## Learning Laravel
+### 3. Masuk ke Direktori Proyek
+Setelah proses clone selesai, masuk ke direktori proyek yang baru saja Anda clone:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 4. Install Dependencies Composer
+Jika Composer sudah terinstall, jalankan perintah berikut untuk menginstall semua dependensi:
+composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 5. Buat File Konfigurasi .env
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 6. Migrasi Database
+php artisan migrate
 
-## Laravel Sponsors
+### 7. Jalankan Aplikasi
+Setelah semua proses di atas selesai, Anda bisa menjalankan aplikasi Laravel di server lokal dengan perintah:
+php artisan serve
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📖 Penggunaan
+Manajemen Produk: Di halaman produk, Anda dapat menambahkan, mengedit, dan menghapus produk sesuai kebutuhan.
+Manajemen Toko: Di halaman toko, Anda dapat menambahkan toko baru dengan detail seperti kode, nama, alamat, dan nomor telepon.
+Pencatatan Penjualan: Di halaman penjualan, Anda dapat memasukkan jumlah produk terjual dan menghubungkannya dengan toko dan produk.
 
-### Premium Partners
+## 🤝 Kontribusi
+Kontribusi sangat diterima! Jika Anda ingin berkontribusi, ikuti langkah-langkah berikut:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Fork repositori ini
+Buat branch baru (git checkout -b feature-branch)
+Commit perubahan Anda (git commit -m 'Add some feature')
+Push ke branch (git push origin feature-branch)
+Buat Pull Request
 
-## Contributing
+## 📝 Lisensi
+Proyek ini dilisensikan di bawah MIT License.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ✨ Terima kasih telah menggunakan dan berkontribusi pada proyek ini! ✨
 
-## Code of Conduct
+## 📞 Kontak
+Developer: Andreas Kevin
+Email: kevinandreas913@gmail.com
+LinkedIn: LinkedIn Anda
+Website: Website Anda
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 📌 Catatan Tambahan
+Jangan lupa untuk mengganti link gambar, tautan, dan informasi pribadi sesuai dengan detail proyek Anda.
+Anda juga bisa menambahkan badges seperti Laravel version, PHP version, license, dll., di bagian atas README untuk membuatnya lebih profesional.
