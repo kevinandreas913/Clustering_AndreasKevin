@@ -11,11 +11,12 @@ Validasi Input: Validasi form yang ketat untuk mencegah data yang salah atau tid
 Antarmuka Sederhana: Desain antarmuka yang bersih dan responsif untuk memudahkan penggunaan.
 
 ## 🔧 Teknologi yang Digunakan
-Backend: Laravel - PHP Framework
-Database: MySQL
-Frontend: Blade Template
-Version Control: Git & GitHub
-Deployment: https://clusteringandreaskevin.vercel.app/
+**Backend**: Laravel - PHP Framework
+**Database**: MySQL
+**Frontend**: Blade Template
+**Version Control**: Git & GitHub
+**Deployment**: Vercel
+**Deployment link**: https://clusteringandreaskevin.vercel.app/
 
 ## 🚀 Instalasi
 Untuk menjalankan proyek ini di mesin lokal Anda, ikuti langkah-langkah berikut:
