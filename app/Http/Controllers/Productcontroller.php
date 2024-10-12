@@ -66,14 +66,7 @@ class Productcontroller extends Controller
         ], [
             'harga.max' => 'The nominal is to long',
         ]);
-
-        // $validatedata = $request->validate([
-        //     'kode_barang' => 'required|min:3|max:10|unique:products,kode_barang,' . $barang->id,
-        //     'nama' => 'required',
-        //     'deskripsi' => '',
-        //     'harga' => 'required',
-        // ]);
-
+        
         products::where('id', $barang->id)->update($validatedata);
         return redirect()->route('table.tabelbarang', ['products' => $barang->id])->with('berhasil', "Update data {$validatedata['nama']} berhasil");
     }
@@ -99,6 +92,7 @@ class Productcontroller extends Controller
             return redirect()->route('table.tabelbarang')->with('berhasil', "Hapus data $productsnama berhasil");
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == '23000') {
+                $productsnama = $products->nama;
                 return redirect()->route('table.tabelbarang')->with('peringatan', "Tidak bisa menghapus $productsnama karena data sudah digunakan dalam penjualan!");
             } else {
                 return redirect()->route('table.tabelbarang')->with('error', 'Terjadi kesalahan saat menghapus data!');

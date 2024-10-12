@@ -75,16 +75,6 @@ class Storecontroller extends Controller
         return redirect()->route('table.tabeltoko', ['stores' => $toko->id])->with('berhasil', "Update data {$validatedata['nama_toko']} berhasil");
     }
 
-    // hapus
-    // public function destroytoko($id)
-    // {
-    //     $stores = stores::findOrFail($id);
-    //     $storesnama = $stores->nama_toko; 
-    //     $stores->delete();
-
-    //     return redirect()->route('table.tabeltoko')->with('berhasil', "Hapus data $storesnama berhasil");
-    // }
-
     public function destroytoko($id)
     {
         try {
@@ -95,6 +85,7 @@ class Storecontroller extends Controller
             return redirect()->route('table.tabeltoko')->with('berhasil', "Hapus data $storesnama berhasil");
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == '23000') {
+                $storesnama = $stores->nama_toko;
                 return redirect()->route('table.tabeltoko')->with('peringatan', "Tidak bisa menghapus $storesnama karena data sudah digunakan dalam penjualan!");
             } else {
                 return redirect()->route('table.tabeltoko')->with('error', 'Terjadi kesalahan saat menghapus data!');
