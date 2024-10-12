@@ -8,6 +8,19 @@
     </div>
     @endif
 
+    @if(session('peringatan'))
+    <div class="alert alert-warning">
+        {{ session('peringatan') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
+
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">

@@ -79,13 +79,30 @@ class Productcontroller extends Controller
     }
 
     // hapus
+    // public function destroybarang($id)
+    // {
+
+    //     $products = products::findOrFail($id);
+    //     $productsnama = $products->nama; // Simpan nama produk sebelum dihapus
+    //     $products->delete();
+
+    //     return redirect()->route('table.tabelbarang')->with('berhasil', "Hapus data $productsnama berhasil");
+    // }
+
     public function destroybarang($id)
     {
+        try {
+            $products = products::findOrFail($id);
+            $productsnama = $products->nama;
 
-        $products = products::findOrFail($id);
-        $productsnama = $products->nama; // Simpan nama produk sebelum dihapus
-        $products->delete();
-
-        return redirect()->route('table.tabelbarang')->with('berhasil', "Hapus data $productsnama berhasil");
+            $products->delete();
+            return redirect()->route('table.tabelbarang')->with('berhasil', "Hapus data $productsnama berhasil");
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() == '23000') {
+                return redirect()->route('table.tabelbarang')->with('peringatan', "Tidak bisa menghapus $productsnama karena data sudah digunakan dalam penjualan!");
+            } else {
+                return redirect()->route('table.tabelbarang')->with('error', 'Terjadi kesalahan saat menghapus data!');
+            }
+        }
     }
 }

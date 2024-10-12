@@ -8,6 +8,18 @@
     </div>
     @endif
 
+    @if(session('peringatan'))
+    <div class="alert alert-warning">
+        {{ session('peringatan') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
@@ -17,7 +29,8 @@
                             Tabel Toko
                         </h1>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button"><a href="/toko" style="color: white">Tambah</a></button>                        </div>
+                            <button class="btn btn-primary me-md-2" type="button"><a href="/toko" style="color: white">Tambah</a></button>
+                        </div>
                     </div>
                 </div>
                 <table class="table table-striped">
